@@ -5,7 +5,7 @@
     return fetch(url, { method: method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined, credentials: 'same-origin' })
       .then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (r.status === 401) { location.href = 'index.html#register'; throw new Error('login'); }
+          if (r.status === 401) { location.href = '/#register'; throw new Error('login'); }
           if (!r.ok) throw new Error(j.error || 'Error');
           return j;
         });
@@ -56,6 +56,6 @@
       var d = $('denied'); d.textContent = e.message === 'Admins only.' ? 'This page is for administrators only.' : e.message; d.hidden = false;
     });
   }
-  $('logout').addEventListener('click', function () { api('POST', '/api/logout', {}).catch(function () {}).then(function () { location.href = 'index.html'; }); });
+  $('logout').addEventListener('click', function () { api('POST', '/api/logout', {}).catch(function () {}).then(function () { location.href = '/'; }); });
   loadAll();
 })();

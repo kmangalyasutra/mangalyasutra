@@ -8,9 +8,9 @@ window.SITE_CONFIG = {
   policyVersion: "",
 
   // Links (BRD FR-05, FR-06). "#" = placeholder until real pages exist.
-  loginUrl: "index.html#register",
-  termsUrl: "terms.html",
-  privacyUrl: "privacy.html",
+  loginUrl: "/#register",
+  termsUrl: "/terms",
+  privacyUrl: "/privacy",
   contactUrl: "contact.html",
 
   // Support block under the form (BRD FR-22). Shown only if a phone or WhatsApp is set.

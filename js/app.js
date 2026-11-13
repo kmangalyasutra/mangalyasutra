@@ -33,7 +33,7 @@
     return fetch(url, { method: method, headers: { 'Content-Type': 'application/json' }, body: body ? JSON.stringify(body) : undefined, credentials: 'same-origin' })
       .then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (r.status === 401) { location.href = 'index.html#register'; throw new Error('login'); }
+          if (r.status === 401) { location.href = '/#register'; throw new Error('login'); }
           if (!r.ok) { var e = new Error(j.error || 'Something went wrong.'); e.body = j; throw e; }
           return j;
         });
@@ -332,7 +332,7 @@
   }
 
   document.getElementById('logout').addEventListener('click', function () {
-    api('POST', '/api/logout', {}).catch(function () {}).then(function () { location.href = 'index.html'; });
+    api('POST', '/api/logout', {}).catch(function () {}).then(function () { location.href = '/'; });
   });
   window.addEventListener('hashchange', route);
 
