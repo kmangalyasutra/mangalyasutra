@@ -393,7 +393,8 @@ html.no-scroll{overflow:hidden}
   .legal-body .card{padding:40px}
   .page-title{font-size:1.5rem}
   .s-cta h2{font-size:1.7rem}
-  .ftr-grid{grid-template-columns:1.4fr 1fr 1fr}
+  .ftr-grid{grid-template-columns:repeat(3,1fr)}
+  .ftr-grid>:first-child{grid-column:1/-1}
   .deco-mandala{width:440px;height:440px}
   /* pop-up becomes a centred card */
   .dlg{width:min(460px,calc(100vw - 32px));height:auto;max-height:92dvh;margin:auto;padding:32px 28px 26px;border-radius:24px;box-shadow:0 40px 90px -20px rgba(20,8,6,.55)}
@@ -439,6 +440,7 @@ html.no-scroll{overflow:hidden}
   .s-cta h2{font-size:2rem}
   .ftr{padding:56px 0 28px}
   .ftr-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+  .ftr-grid>:first-child{grid-column:auto}
   .deco-dot.d1{width:340px;height:340px}
   .deco-dot.d2{width:300px;height:300px}
   .deco-dot.d3{width:360px;height:360px}
@@ -530,3 +532,22 @@ html.no-scroll{overflow:hidden}
   .nav-toggle{order:-1}
   #header-register{margin-left:auto}
 }
+
+/* ---- Responsive hardening (mobile-first): no sideways pan, 44px touch targets, safe areas ---- */
+html{overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img,video,svg{max-width:100%}
+h1,h2,h3,p,li{overflow-wrap:break-word}
+@media (pointer:coarse),(max-width:859px){
+  .hero-dots{gap:0}
+  .hero-dot{width:44px;height:44px}
+  .hero-arrow{min-width:44px;min-height:44px}
+  .ftr-base a,.dlg-note a,.legal a{display:inline-block;padding:12px 4px;margin:-12px -4px}
+}
+.hdr,.ftr{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+@media (max-width:359px){
+  .wrap{padding-left:14px;padding-right:14px}
+  .btn{padding-left:16px;padding-right:16px}
+}
+.ftr-base{padding-right:68px}
+@media (min-width:860px){.ftr-base{padding-right:0}}
+@media (max-width:859px){.ftr li a{min-width:44px}}
